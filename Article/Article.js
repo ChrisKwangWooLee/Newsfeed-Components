@@ -85,6 +85,20 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Part2: Add Articles',
+    date: 'Jan 1st, 2019',
+    firstParagraph: `Now that we have our components built, add a few articles of your own to the data array. Notice how our JavaScript code automatically creates the new articles and adds the styling and functionality we just built to them. This is the power of components. Write the code once and add as many components as you want all while maintaining the functionality we built! `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
 
@@ -112,3 +126,53 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+
+function createArticle(newsData) {
+  // create elements
+  const newsArticle = document.createElement('div');
+  const newsTitle = document.createElement('h2');
+  const newsDate = document.createElement('p');
+  const newsp1 = document.createElement('p');
+  const newsp2 = document.createElement('p');
+  const newsp3 = document.createElement('p');
+  const newsExpandButton = document.createElement('span');
+
+  // add class
+  newsArticle.classList.add('article');
+  newsDate.classList.add('date');
+  newsExpandButton.classList.add('expandButton');
+
+  // add text content
+  newsTitle.textContent = newsData.title;
+  newsDate.textContent = newsData.date;
+  newsp1.textContent = newsData.firstParagraph;
+  newsp2.textContent = newsData.secondParagraph;
+  newsp3.textContent = newsData.thirdParagraph;
+
+  // append child
+  newsArticle.appendChild(newsTitle);
+  newsArticle.appendChild(newsDate);
+  newsArticle.appendChild(newsp1);
+  newsArticle.appendChild(newsp2);
+  newsArticle.appendChild(newsp3);
+  newsArticle.appendChild(newsExpandButton);
+
+  // add event listener
+  newsExpandButton.addEventListener('click', event => {
+    newsArticle.classList.toggle('article-open');
+  })
+
+  return newsArticle;
+}
+
+const articles = document.querySelector('.articles');
+let articlesArr = data.map(el => {
+  return createArticle(el);
+})
+console.log(articlesArr);
+
+articlesArr.forEach( el => {
+  articles.appendChild(el);
+});
+
