@@ -149,6 +149,7 @@ function createArticle(newsData) {
   newsp1.textContent = newsData.firstParagraph;
   newsp2.textContent = newsData.secondParagraph;
   newsp3.textContent = newsData.thirdParagraph;
+  newsExpandButton.textContent = 'Expand Button'
 
   // append child
   newsArticle.appendChild(newsTitle);
