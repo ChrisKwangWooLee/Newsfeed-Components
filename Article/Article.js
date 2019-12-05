@@ -85,6 +85,20 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Part2: Add Articles',
+    date: 'Jan 1st, 2019',
+    firstParagraph: `Now that we have our components built, add a few articles of your own to the data array. Notice how our JavaScript code automatically creates the new articles and adds the styling and functionality we just built to them. This is the power of components. Write the code once and add as many components as you want all while maintaining the functionality we built! `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
 
@@ -112,3 +126,135 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+
+function createArticle(newsData) {
+  // create elements
+  const newsArticle = document.createElement('div');
+  const newsTitle = document.createElement('h2');
+  const newsDate = document.createElement('p');
+  const newsp1 = document.createElement('p');
+  const newsp2 = document.createElement('p');
+  const newsp3 = document.createElement('p');
+  const newsExpandButton = document.createElement('span');
+  const newsCloseButton = document.createElement('span');
+  
+  // add class
+  newsArticle.classList.add('article');
+  newsDate.classList.add('date');
+  newsExpandButton.classList.add('expandButton');
+  newsCloseButton.classList.add('close');
+
+  // add text content
+  newsTitle.textContent = newsData.title;
+  newsDate.textContent = newsData.date;
+  newsp1.textContent = newsData.firstParagraph;
+  newsp2.textContent = newsData.secondParagraph;
+  newsp3.textContent = newsData.thirdParagraph;
+  newsExpandButton.textContent = 'Expand Button';
+  newsCloseButton.textContent = 'Close Button';
+
+  // append child
+  newsArticle.appendChild(newsTitle);
+  newsArticle.appendChild(newsDate);
+  newsArticle.appendChild(newsp1);
+  newsArticle.appendChild(newsp2);
+  newsArticle.appendChild(newsp3);
+  newsArticle.appendChild(newsExpandButton);
+  newsArticle.appendChild(newsCloseButton);
+
+  // add event listener
+  newsExpandButton.addEventListener('click', event => {
+    newsArticle.classList.toggle('article-open');
+  })
+
+  newsCloseButton.addEventListener('click', event => {
+
+    newsArticle.classList.toggle('article-remove');
+  })
+
+  return newsArticle;
+}
+
+const articles = document.querySelector('.articles');
+let articlesArr = data.map(el => {
+  return createArticle(el);
+})
+console.log(articlesArr);
+
+articlesArr.forEach( el => {
+  articles.appendChild(el);
+});
+
+function ChrisCreateArticle(data) {
+
+}
+
+
+// Stretch
+  // <div class='tw-article'>
+  //   <a href="#" class='tw-title'>
+  //     <span class = 'tw-user-ID'>User ID</span>
+  //     <span class = 'tw-date'>date</span>
+  //   </a>
+  //   <p class='tw-content'>Tweet</p>
+  //   <p class = 'tw-likeButton'>Like Button</p>
+  // </div>
+
+const twData = [
+  {
+    userID: 'Lambda School',
+    Date: '2019 December',
+    Content: '“Income Share Agreements are a much, much more student-friendly way to finance education. ISAs remove cost and financial risk as a barrier to entry, and that’s an innovation in itself,” explains @Austen in his live Q&A on #Quora.'
+  },
+  {
+    userID: 'Chris Lee',
+    Date: '2020 January',
+    Content: "HIHIHIHIHIHIHIHIHI"
+  }
+];
+
+function twArticleCreator(data) {
+  // create element
+  const twArticle = document.createElement('div');
+  const twTitle = document.createElement('a');
+  const twUserID = document.createElement('span');
+  const twDate = document.createElement('span');
+  const twContent = document.createElement('p');
+  const twLikeButton = document.createElement('button');
+
+  // add class
+  twArticle.classList.add('tw-article');
+  twTitle.classList.add('tw-title');
+  twUserID.classList.add('tw-user-ID');
+  twDate.classList.add('tw-date');
+  twContent.classList.add('tw-content');
+  twLikeButton.classList.add('tw-likeButton');
+
+  // add text content
+  twUserID.textContent = data.userID;
+  twDate.textContent = data.Date;
+  twContent.textContent = data.Content;
+
+  let likeCount = 0;
+  twLikeButton.textContent = `Like: ${likeCount}`;
+
+  twLikeButton.addEventListener('click', event => {
+    likeCount++;
+    twLikeButton.textContent = `Like: ${likeCount}`
+  })
+  // append
+  twTitle.appendChild(twUserID);
+  twTitle.appendChild(twDate);
+  twArticle.appendChild(twTitle);
+  twArticle.appendChild(twContent);
+  twArticle.appendChild(twLikeButton);
+
+  return twArticle;
+}
+
+const twArticles = document.querySelector('.tw-articles');
+
+twData.forEach(el => {
+  twArticles.appendChild(twArticleCreator(el));
+})
