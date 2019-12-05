@@ -143,7 +143,7 @@ function createArticle(newsData) {
   newsArticle.classList.add('article');
   newsDate.classList.add('date');
   newsExpandButton.classList.add('expandButton');
-  newsCloseButton.classList.add('closeButton');
+  newsCloseButton.classList.add('close');
 
   // add text content
   newsTitle.textContent = newsData.title;
@@ -151,7 +151,7 @@ function createArticle(newsData) {
   newsp1.textContent = newsData.firstParagraph;
   newsp2.textContent = newsData.secondParagraph;
   newsp3.textContent = newsData.thirdParagraph;
-  newsExpandButton.textContent = 'Expand Button'
+  newsExpandButton.textContent = 'Expand Button';
   newsCloseButton.textContent = 'Close Button';
 
   // append child
