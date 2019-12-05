@@ -76,6 +76,29 @@
 .article-open {
   height: 400px;
 }
+.tw-article {
+  width: 50%;
+  border: 1px solid black;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background: pink;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 30px;
+}
+.tw-article .tw-title {
+  color: white;
+  margin: 0 auto;
+}
+.tw-article .tw-title .tw-user-ID {
+  color: red;
+  margin-right: 30px;
+}
+.tw-article .tw-likeButton {
+  width: 20%;
+  margin: 0 auto;
+}
 .menu-button {
   position: absolute;
   left: 20px;
